@@ -22,9 +22,9 @@ const agent = new SocksProxyAgent("socks://127.0.0.1:20170");
 const server = createServer({
   cert: readFileSync("./cert.pem"),
   key: readFileSync("./key.pem"),
-  ca: readFileSync("./ca.pem"),
+  ca: [readFileSync("./ca.pem")],
   requestCert: true,
-  rejectUnauthorized: false,
+  rejectUnauthorized: true,
 });
 
 const wss = new WebSocketServer({
